@@ -51,21 +51,28 @@ icon: https://www.vibekanban.com/images/logos/factory-ai-logo-light.png
 
 ## Configuration Options
 
-Droid supports several configuration options in Vibe Kanban:
+Droid supports the following configuration options in Vibe Kanban:
 
-- **Autonomy Level**: Controls permission level for file and system operations
+- **Autonomy Level**: Controls permission level for file and system operations. Passed as `--auto <level>` or `--skip-permissions-unsafe`. Configured via `autonomy`.
   - `normal`: Read-only mode – safe for reviewing planned changes without execution
-  - `low`: Basic file creation/editing while blocking system changes
-  - `medium`: Development operations with recoverable side effects
-  - `high`: Production operations with security implications or major side effects
-  - `skip-permissions-unsafe`: Bypasses all permission checks (use only in isolated environments) (default)
+  - `low`: Basic file creation/editing while blocking system changes (passes `--auto low`)
+  - `medium`: Development operations with recoverable side effects (passes `--auto medium`)
+  - `high`: Production operations with security implications or major side effects (passes `--auto high`)
+  - `skip-permissions-unsafe`: Bypasses all permission checks (passes `--skip-permissions-unsafe`; use only in isolated environments) (default)
 
-- **Model**: Specify which model to use
+- **Model**: Specify which model to use. Passed as `--model <model>`. Available options include:
+  `claude-opus-4-6`, `claude-opus-4-6-fast`, `gemini-3.1-pro-preview`, `glm-5`,
+  `gpt-5.3-codex`, `claude-sonnet-4-6`, `kimi-k2.5`, `minimax-m2.5`, `glm-4.7`,
+  `claude-opus-4-5-20251101`, `claude-sonnet-4-5-20250929`, `claude-haiku-4-5-20251001`,
+  `gpt-5.2-codex`, `gpt-5.2`, `gemini-3-pro-preview`, `gemini-3-flash-preview`,
+  `gpt-5.1-codex`, `gpt-5.1-codex-max`, `gpt-5.1`
 
-- **Reasoning Effort**: Control the reasoning depth
-  - `off`: Minimal reasoning
+- **Reasoning Effort**: Control the reasoning depth. Passed as `--reasoning-effort <level>`. Configured via `reasoning_effort`.
+  - `none`: No reasoning tokens used
+  - `off`: Reasoning disabled
   - `low`: Light reasoning
   - `medium`: Balanced reasoning
   - `high`: Deep reasoning for complex tasks
+  - `dynamic`: Let the model choose the reasoning depth dynamically
 
 These options can be configured when creating agent configurations in Vibe Kanban.

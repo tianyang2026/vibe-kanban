@@ -25,3 +25,21 @@ icon: https://www.vibekanban.com/images/logos/opencode-light.svg
   You can now select OpenCode when creating task attempts.
 </Step>
 </Steps>
+
+## Configuration Options
+
+OpenCode supports the following configuration options in Vibe Kanban:
+
+- **Model**: The model to use, in `<provider>/<model>` format (e.g., `anthropic/claude-sonnet-4-5`, `openai/gpt-4o`). Configured via `model`.
+
+- **Variant**: Model variant to use (when the provider supports multiple variants of the same model). Configured via `variant`.
+
+- **Agent**: The agent type or mode to run (e.g., `coder`, `researcher`). Also accepted as `mode`. Configured via `agent`.
+
+- **Auto Approve**: When enabled (default), agent actions are auto-approved without prompting. When disabled, each tool call goes through Vibe Kanban's approval flow. Configured via `auto_approve`.
+
+- **Auto Compact**: When enabled (default), OpenCode automatically compacts the conversation context when it approaches the model's context window limit. Configured via `auto_compact`.
+
+These options can be configured when creating agent configurations in Vibe Kanban.
+
+OpenCode is launched as a local server (`npx opencode-ai serve`) — Vibe Kanban communicates with it over a local HTTP API.

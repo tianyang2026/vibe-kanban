@@ -27,3 +27,26 @@ icon: https://www.vibekanban.com/images/logos/cursor-logo-light.png
   You can now select Cursor Agent CLI when creating task attempts.
 </Step>
 </Steps>
+
+## Configuration Options
+
+Cursor Agent CLI supports the following configuration options in Vibe Kanban:
+
+- **Model**: The base model to use. Passed as `--model <model>`. Available options:
+  `auto`, `opus-4.6`, `sonnet-4.6`, `gpt-5.4`, `gpt-5.4-fast`, `gpt-5.3-codex`,
+  `gpt-5.3-codex-fast`, `gpt-5.3-codex-spark-preview`, `gpt-5.2`, `gpt-5.2-codex`,
+  `gpt-5.2-codex-fast`, `gpt-5.1`, `gpt-5.1-codex-max`, `gpt-5.1-codex-mini`,
+  `grok`, `kimi-k2.5`, `gemini-3.1-pro`, `gemini-3-pro`, `gemini-3-flash`,
+  `opus-4.5`, `sonnet-4.5`, `composer-1.5`, `composer-1`
+
+- **Reasoning**: Reasoning level for models that support it. Combined with the model to produce the final `--model` value passed to `cursor-agent`. Configured via `reasoning`.
+  - For GPT models (`gpt-5.4`, `gpt-5.3-codex`, `gpt-5.2-codex`, etc.): `low`, `medium`, `high`, `xhigh`
+  - For Claude models (`opus-4.6`, `sonnet-4.6`, `opus-4.5`, `sonnet-4.5`): `standard`, `thinking`
+
+  Example: model `gpt-5.4` + reasoning `high` → `cursor-agent --model gpt-5.4-high`
+
+- **Permission Mode** / **Force**: Controls command execution permissions.
+  - **Auto** (Force enabled): Adds `--force` to auto-approve all commands including potentially destructive ones.
+  - **Supervised** (default): Adds `--trust` for the current directory only; individual tool calls go through Vibe Kanban's approval flow.
+
+These options can be configured when creating agent configurations in Vibe Kanban.

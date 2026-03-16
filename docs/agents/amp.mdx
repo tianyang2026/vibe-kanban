@@ -25,3 +25,13 @@ icon: https://www.vibekanban.com/images/logos/amp-logo.svg
   You can now select Amp when creating task attempts.
 </Step>
 </Steps>
+
+## Configuration Options
+
+Amp supports the following configuration options in Vibe Kanban:
+
+- **Dangerously Allow All**: When enabled, adds `--dangerously-allow-all` to bypass all safety checks and auto-approve every tool call. Use only in isolated/sandboxed environments. Configured via `dangerously_allow_all`.
+
+These options can be configured when creating agent configurations in Vibe Kanban.
+
+Amp stores its MCP configuration in `~/.config/amp/settings.json`.

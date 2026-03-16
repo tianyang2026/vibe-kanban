@@ -25,3 +25,34 @@ icon: https://www.vibekanban.com/images/logos/claude.svg#"
   You can now select Claude Code when creating task attempts.
 </Step>
 </Steps>
+
+## Configuration Options
+
+Claude Code supports the following configuration options in Vibe Kanban:
+
+- **Model**: The model to use (e.g., `claude-opus-4-5-20251101`, `claude-sonnet-4-5`, `claude-haiku-4-5`). Passed as `--model <model>`.
+
+- **Effort**: Reasoning effort level for extended thinking. Passed as `--effort <level>`.
+  - `low`: Minimal reasoning
+  - `medium`: Balanced reasoning
+  - `high`: Deep reasoning
+  - `max`: Maximum reasoning depth
+
+- **Permission Mode**: Controls how Claude Code handles tool permissions.
+  - **Auto** (default): Bypasses all permission prompts — equivalent to `--dangerously-skip-permissions`. Recommended for isolated/sandboxed environments.
+  - **Supervised**: Each tool call requires your confirmation before execution.
+  - **Plan**: Agent proposes a full plan for review before executing any changes.
+
+- **Dangerously Skip Permissions**: When enabled, adds `--dangerously-skip-permissions` to bypass all permission checks. Use only in isolated environments.
+
+- **Agent**: Specify a custom sub-agent to invoke (e.g., `research`). Passed as `--agent <agent>`.
+
+- **Claude Code Router**: Enable [CCR (Claude Code Router)](/agents/ccr) integration to route prompts across multiple LLM providers. When enabled, the command switches from `claude` to `claude-code-router`.
+
+- **Disable API Key**: Prevent the agent from using an API key for authentication (for OAuth/browser-based auth only).
+
+These options can be configured when creating agent configurations in Vibe Kanban.
+
+## Custom Configuration Directory
+
+Claude Code stores its configuration in `~/.claude` by default.
