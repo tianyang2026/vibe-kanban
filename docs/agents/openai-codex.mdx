@@ -28,6 +28,61 @@ icon: https://www.vibekanban.com/images/logos/openai-logo.svg
 </Step>
 </Steps>
 
+## Configuration Options
+
+Codex supports the following configuration options in Vibe Kanban:
+
+- **Model**: The model to use (e.g., `gpt-5.4`, `gpt-5.3-codex`, `gpt-5.2-codex`). Append `-fast` to any model name to use the faster service tier (e.g., `gpt-5.3-codex-fast`).
+
+- **Reasoning Effort**: Controls the depth of model reasoning. Configured via `model_reasoning_effort`.
+  - `low`: Light reasoning
+  - `medium`: Balanced reasoning
+  - `high`: Deep reasoning
+  - `xhigh`: Maximum reasoning depth
+
+- **Reasoning Summary**: Style of reasoning summary included in output. Configured via `model_reasoning_summary`.
+  - `auto`: Let the model decide
+  - `concise`: Short summary
+  - `detailed`: Full detailed summary
+  - `none`: No reasoning summary
+
+- **Reasoning Summary Format**: Format for reasoning summaries. Configured via `model_reasoning_summary_format`.
+  - `none`: Default format
+  - `experimental`: Experimental extended format
+
+- **Sandbox Mode**: Controls filesystem and execution sandboxing. Configured via `sandbox`.
+  - `auto` (default): Workspace-write access with on-request approval
+  - `read-only`: Read-only filesystem access
+  - `workspace-write`: Write access within the workspace only
+  - `danger-full-access`: Full filesystem access (use only in isolated environments)
+
+- **Ask for Approval**: When to prompt you before executing commands. Configured via `ask_for_approval`.
+  - `unless-trusted`: Auto-approve read-only operations; ask for everything else (maps to Supervised mode)
+  - `on-failure`: Try sandboxed first, ask only when the sandbox blocks a command
+  - `on-request`: Agent decides when to ask
+  - `never`: Never ask — all commands auto-approved (maps to Auto mode)
+
+- **Permission Mode**: High-level shortcut controlling the above approval and sandbox settings.
+  - **Auto**: Sets `ask_for_approval` to `never` — fully autonomous.
+  - **Supervised**: Sets `ask_for_approval` to `unless-trusted` — confirms non-read-only operations.
+  - **Plan**: Codex enters plan mode — it presents a proposed plan of changes for your review before executing anything. Uses the Codex app-server's review protocol rather than a chat session.
+
+- **OSS Mode**: When enabled, adds `--oss` to use the OSS/open-source variant of Codex. Configured via `oss`.
+
+- **Model Provider**: Override the model provider (e.g., `azure`, `openai`). Configured via `model_provider`.
+
+- **Profile**: Select a named Codex profile for configuration presets. Configured via `profile`.
+
+- **Base Instructions**: Override the base system instructions sent to the model. Configured via `base_instructions`.
+
+- **Developer Instructions**: Append additional developer-level instructions. Configured via `developer_instructions`.
+
+- **Include Apply Patch Tool**: Enable or disable the `apply_patch` tool. Configured via `include_apply_patch_tool`.
+
+- **Compact Prompt**: Custom prompt used when Codex auto-compacts the conversation context. Configured via `compact_prompt`.
+
+These options can be configured when creating agent configurations in Vibe Kanban.
+
 ## Custom Configuration Directory
 
 By default, Codex stores its configuration and session data in `~/.codex`. If you have configured a custom location using the `CODEX_HOME` environment variable, Vibe Kanban will automatically detect and use that location.

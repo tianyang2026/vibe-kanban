@@ -25,3 +25,19 @@ icon: https://www.vibekanban.com/images/logos/qwen-logo.png#"
   You can now select Qwen Code when creating task attempts.
 </Step>
 </Steps>
+
+## Configuration Options
+
+Qwen Code supports the following configuration options in Vibe Kanban:
+
+- **Model**: The model to use. Passed as `--model <model>`. Configured via `model`.
+
+- **Agent**: The agent type or mode to run. Also accepted as `mode`. Configured via `agent`.
+
+- **Permission Mode** / **YOLO**: Controls whether Qwen Code auto-approves tool calls.
+  - **Auto** (YOLO enabled): Adds `--yolo` to auto-approve all tool calls.
+  - **Supervised** (default): Tool calls are submitted to Vibe Kanban's approval flow before execution.
+
+These options can be configured when creating agent configurations in Vibe Kanban.
+
+Qwen Code stores its configuration in `~/.qwen/`.

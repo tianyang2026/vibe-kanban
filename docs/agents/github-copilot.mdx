@@ -25,3 +25,29 @@ icon: https://www.vibekanban.com/images/logos/github-copilot-logo.svg
   You can now select GitHub Copilot when creating task attempts.
 </Step>
 </Steps>
+
+## Configuration Options
+
+GitHub Copilot supports the following configuration options in Vibe Kanban:
+
+- **Model**: The model to use. Passed as `--model <model>`. Available options include:
+  `gpt-5.4`, `claude-opus-4.6`, `claude-opus-4.6-fast`, `gpt-5.3-codex`, `claude-sonnet-4.6`,
+  `claude-haiku-4.5`, `gemini-3-pro-preview`, `gpt-5.2-codex`, `gpt-5.2`, `gpt-5.1-codex-max`,
+  `gpt-5.1-codex`, `gpt-5.1`, `gpt-5.1-codex-mini`, `gpt-5-mini`, `gpt-4.1`, `claude-opus-4.5`,
+  `claude-sonnet-4.5`, `claude-sonnet-4`
+
+- **Permission Mode** / **Allow All Tools**: Controls which tools the agent can execute.
+  - **Auto** (default): Adds `--allow-all-tools` to auto-approve every tool call.
+  - **Supervised**: Tool calls are individually confirmed via Vibe Kanban's approval flow.
+
+- **Allow Tool**: Grant access to a specific named tool. Passed as `--allow-tool <tool>`. Configured via `allow_tool`.
+
+- **Deny Tool**: Block a specific named tool from being used. Passed as `--deny-tool <tool>`. Configured via `deny_tool`.
+
+- **Add Directory**: Add an extra directory to the agent's working context. Passed as `--add-dir <path>` (can specify multiple). Configured via `add_dir`.
+
+- **Disable MCP Server**: Prevent a named MCP server from loading. Passed as `--disable-mcp-server <name>` (can specify multiple). Configured via `disable_mcp_server`.
+
+These options can be configured when creating agent configurations in Vibe Kanban.
+
+GitHub Copilot stores its configuration in `~/.copilot/`.

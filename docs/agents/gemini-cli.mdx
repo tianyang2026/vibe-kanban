@@ -25,3 +25,20 @@ icon: https://www.vibekanban.com/images/logos/gemini-logo.svg
   You can now select Gemini CLI when creating task attempts.
 </Step>
 </Steps>
+
+## Configuration Options
+
+Gemini CLI supports the following configuration options in Vibe Kanban:
+
+- **Model**: The model to use. Passed as `--model <model>`. Available models:
+  - `gemini-3.1-pro-preview` — Gemini 3.1 Pro Preview
+  - `gemini-3-pro-preview` — Gemini 3 Pro (default)
+  - `gemini-3-flash-preview` — Gemini 3 Flash
+
+- **Permission Mode** / **YOLO**: Controls whether Gemini CLI auto-approves tool calls.
+  - **Auto** (YOLO enabled): Adds `--yolo --allowed-tools run_shell_command` to auto-approve all tool calls including shell commands.
+  - **Supervised** (default): Each tool call is submitted to Vibe Kanban's approval flow before execution.
+
+These options can be configured when creating agent configurations in Vibe Kanban.
+
+Gemini CLI stores its configuration and OAuth credentials in `~/.gemini/`.
